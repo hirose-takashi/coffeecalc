@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>Flavor Calculator</title>
+
+    <style type="text/css">
+
+    input[type=checkbox] {
+	display: none;
+    }
+    input[type="checkbox"].checkbox01:checked + label {
+    	background: #31A9EE;
+    	color: #ffffff;
+    }
+    .check_label1:hover {
+    	background-color: #E2EDF9;
+    }
+    .check_label1 {
+        appearance:none;
+    	display: block;
+    	float: left;
+    	margin: 5px;
+    	width: 100px;
+    	height: 45px;
+    	text-align: center;
+    	line-height: 45px;
+    	padding-left: 5px;
+    	padding-right: 5px;
+    	cursor: pointer;
+    	color: #31A9EE;
+    	border: 2px solid #006DD9;
+    	border-radius: 5px;
+    }
+
+    input[type=checkbox] {
+	display: none;
+    }
+    input[type="checkbox"].checkbox02:checked + label {
+    	background: #fa8072;
+    	color: #ffffff;
+    }
+    .check_label2:hover {
+    	background-color: #fae3e1;
+    }
+    .check_label2 {
+    	display: block;
+    	float: left;
+    	margin: 5px;
+    	width: 100px;
+    	height: 45px;
+    	text-align: center;
+    	line-height: 45px;
+    	padding-left: 5px;
+    	padding-right: 5px;
+    	cursor: pointer;
+    	color: #fa8072;
+    	border: 2px solid #fa8072;
+    	border-radius: 5px;
+    }
+
+
+
+    .raised {
+    	display: block;
+    	float: left;
+    	margin: 5px;
+    	width: 200px;
+    	height: 45px;
+        font-size: 1.5em;/*文字サイズ*/
+    	text-align: center;
+    	line-height: 45px;
+    	padding-left: 5px;
+    	padding-right: 5px;
+    	cursor: pointer;
+    	color: #ff80c4;
+    	border: 2px solid #ff80c4;
+    	border-radius: 5px;
+    }
+
+    .raised:hover {
+    	background-color: #ffffff;
+    }
+
+
+    .box24 {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #e6f4ff;
+    color: #5c98d4;
+    font-weight: bold;
+    }
+    .box24:after {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 30px;
+        border: 15px solid transparent;
+        border-top: 15px solid #e6f4ff;
+        width: 0;
+        height: 0;
+    }
+    .box24 p {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+    label {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding-left: 30px;
+      padding-right: 10px;
+      line-height: 36px;
+      cursor: pointer;
+    }
+    label::before {
+      content: " ";
+      position: absolute;
+      top: 6px;
+      left: 0;
+      display: block;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #006DD9;
+      border-radius: 4px;
+      z-index: -1;
+    }
+    input[type="checkbox"] + label::before {
+      border-radius: 18px;
+    }
+    /* Checked */
+    input[type="checkbox"]:checked + label {
+      padding-left: 10px;
+      color: #5c98d4;
+    }
+    input[type="checkbox"]:checked + label::before {
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #e6f4ff;
+    }
+
+    /* Transition */
+    label,
+    label::before {
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+    }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="box24">
+        <pre>
+            <font size="4">
+                <b>Flavor Calculator</b> で味を設計しましょう。<br>
+                "1つめの風味を選ぶ"→"+か−ボタンを押す"→"2つめの風味を選ぶ"→"リクエスト"で、<br>
+                スターバックスのコーヒー豆の中からおすすめTop3が表示されます。<br>
+            </font>
+        </pre>
+    </div>
+
+
+    <form action="{% url 'hello:hello_form_post' %}" method="post" name="myform">
+    {% csrf_token %}
+
+    <!--
+    <input type="checkbox" name="flavor" id="cb11" />
+    <label for="cb11">Check this</label>
+    <input type="checkbox" name="flavor" id="cb12" />
+    <label for="cb12">... and this...</label>
+    <input type="checkbox" name="cb" id="cb13" />
+    <label for="cb13">and maybe this</label>
+    <br>
+
+    <input type="checkbox" name="cb" id="cb21" />
+    <label for="cb21">Check this</label>
+    <input type="checkbox" name="cb" id="cb22" />
+    <label for="cb22">... and this...</label>
+    <input type="checkbox" name="cb" id="cb23" />
+    <label for="cb23">and maybe this</label>
+    -->
+
+    <div>
+        <input type="checkbox" value="シトラス" name="flavor" id="citrus1">
+        <label for="citrus1">シトラス</label>
+        <input type="checkbox" value="ベリー" name="flavor" id="berry1">
+        <label for="berry1">ベリー</label>
+        <input type="checkbox" value="キャラメル" name="flavor" id="caramel1">
+        <label for="caramel1">キャラメル</label>
+        <input type="checkbox" value="チョコレート" name="flavor" id="chocolate1">
+        <label for="chocolate1">チョコレート</label>
+        <input type="checkbox" value="ハーブ" name="flavor" id="herb1">
+        <label for="herb1">ハーブ</label>
+        <input type="checkbox" value="軽やか" name="flavor" id="light1">
+
+        <label for="light1">軽やか</label>
+        <input type="checkbox" value="バランス" name="flavor" id="medium1">
+        <label for="medium1">バランス</label>
+        <input type="checkbox" value="力強い" name="flavor" id="full1">
+        <label for="full1">力強い</label>
+
+        <input type="checkbox" value="WILLOW" name="flavor" id="willow">
+        <label for="willow">ウィロー</label>
+        <input type="checkbox" value="LIGHTNOTE" name="flavor" id="lightnote">
+        <label for="lightnote">ライトノート</label>
+
+        <input type="checkbox" value="BREAKFAST" name="flavor" id="breakfast">
+        <label for="breakfast">ブレックファースト</label>
+        <input type="checkbox" value="KENYA" name="flavor" id="kenya">
+        <label for="kenya">ケニア</label>
+
+
+        <input type="checkbox" value="PIKEPLACE" name="flavor" id="pikeplace">
+        <label for="pikaplace">パイクプレイス</label>
+        <input type="checkbox" value="GUATEMALA" name="flavor" id="guatemala">
+        <label for="guatemala">グアテマラ</label>
+
+
+        <input type="checkbox" value="ETHIOPIA" name="flavor" id="ethiopia">
+        <label for="ethiopia">エチオピア</label>
+        <input type="checkbox" value="HOUSE" name="flavor" id="house">
+        <label for="house">ハウスブレンド</label>
+
+
+        <input type="checkbox" value="COLOMBIA" name="flavor" id="colombia">
+        <label for="colombia">コロンビア</label>
+        <input type="checkbox" value="SUMATRA" name="flavor" id="sumatra">
+        <label for="sumatra">スマトラ</label>
+
+
+        <input type="checkbox" value="KOMODO" name="flavor" id="komodo">
+        <label for="komodo">コモド</label>
+        <input type="checkbox" value="VERONA" name="flavor" id="verona">
+        <label for="verona">ベロナ</label>
+
+        <input type="checkbox" value="ESPRESSO" name="flavor" id="espresso">
+        <label for="espresso">エスプレッソ</label>
+        <input type="checkbox" value="ITALIAN" name="flavor" id="italian">
+        <label for="italian">イタリアン</label>
+
+        <input type="checkbox" value="FRENCH" name="flavor" id="french">
+        <label for="french">フレンチ</label>
+        <input type="checkbox" value="CHRISTMAS-ESPRESSO" name="flavor" id="CHRISTMAS-ESPRESSO">
+        <label for="CHRISTMAS-ESPRESSO">クリスマス・エスプレッソ</label>
+
+
+
+
+    </div>
+
+    <div>
+    <input type="checkbox" value="+" name="flavor" id="plus">
+    <label for="plus">+</label>
+    <input type="checkbox" value="-" name="flavor" id="minus">
+    <label for="minus">−</label>
+    </div>
+
+    <div>
+        <input type="checkbox" value="シトラス" name="flavor" id="citrus2">
+        <label for="citrus2">シトラス</label>
+        <input type="checkbox" value="ベリー" name="flavor" id="berry2">
+        <label for="berry2">ベリー</label>
+        <input type="checkbox" value="キャラメル" name="flavor" id="caramel2">
+        <label for="caramel2">キャラメル</label>
+        <input type="checkbox" value="チョコレート" name="flavor" id="chocolate2">
+        <label for="chocolate2">チョコレート</label>
+        <input type="checkbox" value="ハーブ" name="flavor" id="herb2">
+        <label for="herb2">ハーブ</label>
+        <input type="checkbox" value="軽やか" name="flavor" id="light2">
+        <label for="light2">軽やか</label>
+        <input type="checkbox" value="バランス" name="flavor" id="medium2">
+        <label for="medium2">バランス</label>
+        <input type="checkbox" value="力強い" name="flavor" id="full2">
+        <label for="full2">力強い</label>
+
+    </div>
+
+    <ul id="wrap1">
+    <input type="submit" value="Request" class="raised">
+    </ul>
+    <!---
+    <ul>
+    <input type="checkbox" value="COLOMBIA" name="flavor" id="bean" class="checkbox01">
+    <label for="bean" class="check_label1">コロンビア</label>
+    <input type="checkbox" value="シトラス" name="flavor" id="citrus" class="checkbox01">
+    <label for="citrus" class="check_label1">シトラス</label>
+    <input type="checkbox" value="ベリー" name="flavor" id="berry" class="checkbox01">
+    <label for="berry" class="check_label1">ベリー</label>
+    <input type="checkbox" value="キャラメル" name="flavor" id="caramel" class="checkbox01">
+    <label for="caramel" class="check_label1">キャラメル</label>
+    <input type="checkbox" value="チョコレート" name="flavor" id="chocolate" class="checkbox01">
+    <label for="chocolate" class="check_label1">チョコレート</label>
+    <input type="checkbox" value="ハーブ" name="flavor" id="herb" class="checkbox01">
+    <label for="herb" class="check_label1">ハーブ</label>
+    <input type="checkbox" value="軽やか" name="flavor" id="light" class="checkbox01">
+    <label for="light" class="check_label1">軽やか</label>
+    <input type="checkbox" value="バランス" name="flavor" id="medium" class="checkbox01">
+    <label for="medium" class="check_label1">バランス</label>
+    <input type="checkbox" value="力強い" name="flavor" id="full" class="checkbox01">
+    <label for="full" class="check_label1">力強い</label>
+    </ul>
+
+
+
+    <input type="checkbox" value="+" name="flavor" id="plus" class="checkbox02">
+    <label for="plus" class="check_label2">+</label>
+    <input type="checkbox" value="-" name="flavor" id="minus" class="checkbox02">
+    <label for="minus" class="check_label2">−</label>
+
+    <ul id="wrap1">
+    <input type="submit" value="Request" class="raised">
+    </ul>
+    -->
+
+
+    </form>
+
+
+
+
+    <div style="position:absolute; top:600px; left:10px;">
+    <pre>
+        <font size="3" color="#9bb8de">
+            選択中はボタンの背景に色がつきます。<br>
+            リクエストボタンを押すと画面が変わります。この画面に戻りたいときは、ブラウザの戻るボタンで。<br>
+            戻ってきた後画面をリロードすると、もう一度選び直せます。
+        </font>
+    </pre>
+    </div>
+
+
+
+</body>
+</html>

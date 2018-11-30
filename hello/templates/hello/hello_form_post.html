@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>Flavor Calculator</title>
+
+    <style type="text/css">
+    ul li, ol {
+      color: #1e366a;
+      border-top: solid #1e366a 1px;/*上のボーダー*/
+      border-bottom: solid #1e366a 1px;/*下のボーダー*/
+      padding: 0.5em 0 0.5em 1.5em;
+    }
+
+    ul li, ol li {
+      line-height: 1.5;
+      padding: 0.5em 0;
+    }
+
+    .box24 {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #e6f4ff;
+    color: #5c98d4;
+    font-weight: bold;
+    }
+    .box24:after {
+        position: absolute;
+        content: '';
+        top: 100%;
+        left: 30px;
+        border: 15px solid transparent;
+        border-top: 15px solid #e6f4ff;
+        width: 0;
+        height: 0;
+    }
+    .box24 p {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+
+<body>
+
+<div class="box24">
+    <p>リクエスト：{{ components }}</p>
+</div>
+
+<ol>
+{% for idx in objects %}
+    <li>{{ idx.0 }}, {{ idx.1 }}<br></li>
+{% endfor %}
+</ol>
+</body>
+
+
+
+
+
+</html>
