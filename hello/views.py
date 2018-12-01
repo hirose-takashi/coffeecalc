@@ -67,26 +67,28 @@ def hello_form_post(request):
 
 
     def word2vec(word):
-        import MeCab
+        from janome.tokenizer import Tokenizer
         from gensim.models import word2vec
 
 
-        mt = MeCab.Tagger('')
-        mt.parse('')
+        mt = Tokenizer()
         model = word2vec.Word2Vec.load("wiki.model")
 
         # テキストのベクトルを計算
         def get_vector(text):
             sum_vec = np.zeros(200)
             word_count = 0
-            node = mt.parseToNode(text)
-            while node:
-                fields = node.feature.split(",")
+            #node = mt.parseToNode(text)
+            tokens = mt.tokenize(text)
+
+            for node in tokens:
+                base, fields = node.base_form, node.part_of_speech
+                fields = node.part_of_speech.split(',')
+
                 # 名詞、動詞、形容詞に限定
                 if fields[0] == '名詞' or fields[0] == '動詞' or fields[0] == '形容詞':
                     sum_vec += model.wv[node.surface]
                     word_count += 1
-                node = node.next
 
             return sum_vec / word_count
 
@@ -95,15 +97,7 @@ def hello_form_post(request):
         def cos_sim(v1, v2):
             return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
-        # 外積を計算
-        def vec_outer(v1, v2):
-            return np.cross(v1,v2)
-
-        ### DataBase
-        # id = open('text.txt')
-        # lines = id.readlines()
-        # id.close()
-
+        
         df_in = pd.read_csv("SB.csv", names=("item", "roast", "description", "hp"))
         lines = list(df_in["description"])
         items = list(df_in["item"])
