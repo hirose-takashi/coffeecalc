@@ -1,8 +1,0 @@
-dj-database-url==0.5.0
-Django==1.8
-gensim==3.5.0
-gunicorn==19.9.0
-Janome==0.3.6
-jmespath==0.9.3
-psycopg2==2.7.6.1
-pytz==2018.5
