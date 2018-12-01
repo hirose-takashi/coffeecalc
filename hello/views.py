@@ -73,6 +73,7 @@ def hello_form_post(request):
 
         mt = Tokenizer()
         model = word2vec.Word2Vec.load("wiki.model")
+        print("model", len(model))
 
         # テキストのベクトルを計算
         def get_vector(text):
