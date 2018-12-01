@@ -91,13 +91,14 @@ def hello_form_post(request):
                     word_count += 1
 
             return sum_vec / word_count
+            
 
 
         # cos類似度を計算
         def cos_sim(v1, v2):
             return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
-        
+
         df_in = pd.read_csv("SB.csv", names=("item", "roast", "description", "hp"))
         lines = list(df_in["description"])
         items = list(df_in["item"])
@@ -137,14 +138,6 @@ def hello_form_post(request):
 
         indd = np.argsort(Cos)[::-1]
 
-        # print("Normal")
-        # for i in indd[:10]:
-        #     print(Descri[i], Cos[i])
-        #
-        #
-        # print("Reverse")
-        # for i in indd[30:]:
-        #     print(Descri[i], Cos[i])
 
         return [ [Item[i],Descri[i]] for i in indd[:3]]
 
