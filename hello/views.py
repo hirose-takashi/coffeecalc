@@ -91,7 +91,7 @@ def hello_form_post(request):
                     word_count += 1
 
             return sum_vec / word_count
-            
+
 
 
         # cos類似度を計算
@@ -141,7 +141,7 @@ def hello_form_post(request):
 
         return [ [Item[i],Descri[i]] for i in indd[:3]]
 
-    rec_item = word2vec(p_corr)
+    rec_item = ["aaa", "bbb", "ccc"] #word2vec(p_corr)
 
     if flug==1:
         p_corr[0] = p[0]
