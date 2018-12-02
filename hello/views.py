@@ -72,12 +72,12 @@ def hello_form_post(request):
 
 
         mt = Tokenizer()
-        model = word2vec.Word2Vec.load("word2vec.gensim.model")
-        print("model", len(model))
+        model = word2vec.Word2Vec.load("wiki.model")
+
 
         # テキストのベクトルを計算
         def get_vector(text):
-            sum_vec = np.zeros(50)
+            sum_vec = np.zeros(200)
             word_count = 0
             #node = mt.parseToNode(text)
             tokens = mt.tokenize(text)

@@ -6,6 +6,18 @@
 
     <style type="text/css">
 
+    ul, ol {
+    color: #1e366a;
+    border: dotted #1e366a 1px;/*ドット 色 太さ*/
+    padding: 0.5em 0.5em 0.5em 2em;
+    width: 60vw;
+    }
+
+    ul li, ol li {
+        line-height: 1.5;
+        padding: 0.5em 0;
+    }
+
     input[type=checkbox] {
 	display: none;
     }
@@ -36,29 +48,6 @@
     input[type=checkbox] {
 	display: none;
     }
-    input[type="checkbox"].checkbox02:checked + label {
-    	background: #fa8072;
-    	color: #ffffff;
-    }
-    .check_label2:hover {
-    	background-color: #fae3e1;
-    }
-    .check_label2 {
-    	display: block;
-    	float: left;
-    	margin: 5px;
-    	width: 100px;
-    	height: 45px;
-    	text-align: center;
-    	line-height: 45px;
-    	padding-left: 5px;
-    	padding-right: 5px;
-    	cursor: pointer;
-    	color: #fa8072;
-    	border: 2px solid #fa8072;
-    	border-radius: 5px;
-    }
-
 
 
     .raised {
@@ -67,7 +56,7 @@
     	margin: 5px;
     	width: 200px;
     	height: 45px;
-        font-size: 1.5em;/*文字サイズ*/
+        font-size: 2.5vw;/*文字サイズ*/
     	text-align: center;
     	line-height: 45px;
     	padding-left: 5px;
@@ -90,17 +79,10 @@
     background: #e6f4ff;
     color: #5c98d4;
     font-weight: bold;
+    font-size: 1.8vw;
+    height: 40vw;
     }
-    .box24:after {
-        position: absolute;
-        content: '';
-        top: 100%;
-        left: 30px;
-        border: 15px solid transparent;
-        border-top: 15px solid #e6f4ff;
-        width: 0;
-        height: 0;
-    }
+
     .box24 p {
         margin: 0;
         padding: 0;
@@ -167,34 +149,37 @@
 <body>
     <div class="box24">
         <pre>
-            <font size="4">
-                <b>Flavor Calculator</b> で味を設計しましょう。<br>
-                "1つめの風味を選ぶ"→"+か−ボタンを押す"→"2つめの風味を選ぶ"→"リクエスト"で、<br>
-                スターバックスのコーヒー豆の中からおすすめTop3が表示されます。<br>
+
+            <b>Flavor Calculator</b> で味を設計しましょう。<br>
+            風味 or 銘柄を選んでリクエストすると、<br>
+            スターバックスのコーヒー豆の中からおすすめTop3が表示されます。<br>
+
+            <font color="#9bb8de">
+                選択中はボタンの背景に色がつきます。<br>
+                リクエストボタンを押すと画面が変わります。<br>
+                この画面に戻りたいときは、ブラウザの戻るボタンで。<br>
+                戻ってきた後画面をリロードすると、もう一度選び直せます。
             </font>
+
         </pre>
+
+        <pre>
+
+        </pre>
+
+
     </div>
 
 
     <form action="{% url 'hello:hello_form_post' %}" method="post" name="myform">
     {% csrf_token %}
 
-    <!--
-    <input type="checkbox" name="flavor" id="cb11" />
-    <label for="cb11">Check this</label>
-    <input type="checkbox" name="flavor" id="cb12" />
-    <label for="cb12">... and this...</label>
-    <input type="checkbox" name="cb" id="cb13" />
-    <label for="cb13">and maybe this</label>
-    <br>
 
-    <input type="checkbox" name="cb" id="cb21" />
-    <label for="cb21">Check this</label>
-    <input type="checkbox" name="cb" id="cb22" />
-    <label for="cb22">... and this...</label>
-    <input type="checkbox" name="cb" id="cb23" />
-    <label for="cb23">and maybe this</label>
-    -->
+    <div>
+        <ul>
+            <li>風味 or 銘柄を1つ選んでください</li>
+        </ul>
+    </div>
 
     <div>
         <input type="checkbox" value="シトラス" name="flavor" id="citrus1">
@@ -259,9 +244,12 @@
         <input type="checkbox" value="CHRISTMAS-ESPRESSO" name="flavor" id="CHRISTMAS-ESPRESSO">
         <label for="CHRISTMAS-ESPRESSO">クリスマス・エスプレッソ</label>
 
+    </div>
 
-
-
+    <div>
+        <ul>
+            <li>風味を足すときは＋、引くときは−を押してください</li>
+        </ul>
     </div>
 
     <div>
@@ -269,6 +257,12 @@
     <label for="plus">+</label>
     <input type="checkbox" value="-" name="flavor" id="minus">
     <label for="minus">−</label>
+    </div>
+
+    <div>
+        <ul>
+            <li>風味を1つ選んでください</li>
+        </ul>
     </div>
 
     <div>
@@ -291,58 +285,15 @@
 
     </div>
 
-    <ul id="wrap1">
+    <div>
+
     <input type="submit" value="Request" class="raised">
-    </ul>
-    <!---
-    <ul>
-    <input type="checkbox" value="COLOMBIA" name="flavor" id="bean" class="checkbox01">
-    <label for="bean" class="check_label1">コロンビア</label>
-    <input type="checkbox" value="シトラス" name="flavor" id="citrus" class="checkbox01">
-    <label for="citrus" class="check_label1">シトラス</label>
-    <input type="checkbox" value="ベリー" name="flavor" id="berry" class="checkbox01">
-    <label for="berry" class="check_label1">ベリー</label>
-    <input type="checkbox" value="キャラメル" name="flavor" id="caramel" class="checkbox01">
-    <label for="caramel" class="check_label1">キャラメル</label>
-    <input type="checkbox" value="チョコレート" name="flavor" id="chocolate" class="checkbox01">
-    <label for="chocolate" class="check_label1">チョコレート</label>
-    <input type="checkbox" value="ハーブ" name="flavor" id="herb" class="checkbox01">
-    <label for="herb" class="check_label1">ハーブ</label>
-    <input type="checkbox" value="軽やか" name="flavor" id="light" class="checkbox01">
-    <label for="light" class="check_label1">軽やか</label>
-    <input type="checkbox" value="バランス" name="flavor" id="medium" class="checkbox01">
-    <label for="medium" class="check_label1">バランス</label>
-    <input type="checkbox" value="力強い" name="flavor" id="full" class="checkbox01">
-    <label for="full" class="check_label1">力強い</label>
-    </ul>
-
-
-
-    <input type="checkbox" value="+" name="flavor" id="plus" class="checkbox02">
-    <label for="plus" class="check_label2">+</label>
-    <input type="checkbox" value="-" name="flavor" id="minus" class="checkbox02">
-    <label for="minus" class="check_label2">−</label>
-
-    <ul id="wrap1">
-    <input type="submit" value="Request" class="raised">
-    </ul>
-    -->
-
+    </div>
 
     </form>
 
 
 
-
-    <div style="position:absolute; top:600px; left:10px;">
-    <pre>
-        <font size="3" color="#9bb8de">
-            選択中はボタンの背景に色がつきます。<br>
-            リクエストボタンを押すと画面が変わります。この画面に戻りたいときは、ブラウザの戻るボタンで。<br>
-            戻ってきた後画面をリロードすると、もう一度選び直せます。
-        </font>
-    </pre>
-    </div>
 
 
 
