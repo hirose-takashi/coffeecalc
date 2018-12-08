@@ -69,10 +69,11 @@ def hello_form_post(request):
     def word2vec(word):
         from janome.tokenizer import Tokenizer
         from gensim.models import word2vec
-
+        from gensim.models.keyedvectors import KeyedVectors
 
         mt = Tokenizer()
-        model = word2vec.Word2Vec.load("wiki.model")
+        #model = word2vec.Word2Vec.load("wiki.model")
+        model = word2vec.KeyedVectors.load_word2vec_format("wiki.model")
 
 
         # テキストのベクトルを計算
@@ -143,7 +144,7 @@ def hello_form_post(request):
         return [ [Item[i],Descri[i]] for i in indd[:3]]
 
     rec_item = word2vec(p_corr)
-    
+
 
     if flug==1:
         p_corr[0] = p[0]
