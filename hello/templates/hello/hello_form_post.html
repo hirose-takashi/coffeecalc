@@ -38,6 +38,22 @@
     .box24 p {
         margin: 0;
         padding: 0;
+        font-size: 1.5rem;
+    }
+
+    .main section {
+      margin: 10px;
+      border-radius: 5px;
+      background: #F5F0CF;
+      padding: 15px;
+    }
+    .main h1 {
+      color: #E6AC27;
+      font-size: 1.5rem;
+    }
+    .main p {
+      margin-top: 10px;
+      font-size: 1.2rem;
     }
     </style>
 </head>
@@ -49,11 +65,24 @@
     <p>リクエスト：{{ components }}</p>
 </div>
 
+<!--
 <ol>
 {% for idx in objects %}
     <li>{{ idx.0 }}, {{ idx.1 }}<br></li>
 {% endfor %}
 </ol>
+-->
+
+<div class="main">
+    {% for idx in objects %}
+    <section class="col-1">
+        <h1>{{ idx.0 }}</h1>
+        <p>{{ idx.1 }}</p>
+    </section>
+    {% endfor %}
+</div>
+
+
 </body>
 
 

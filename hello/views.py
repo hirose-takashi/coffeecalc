@@ -143,6 +143,7 @@ def hello_form_post(request):
         return [ [Item[i],Descri[i]] for i in indd[:3]]
 
     rec_item = word2vec(p_corr)
+    
 
     if flug==1:
         p_corr[0] = p[0]

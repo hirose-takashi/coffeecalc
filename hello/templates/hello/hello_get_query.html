@@ -6,6 +6,7 @@
 
     <style type="text/css">
 
+
     ul, ol {
     color: #1e366a;
     border: dotted #1e366a 1px;/*ドット 色 太さ*/
@@ -56,20 +57,25 @@
     	margin: 5px;
     	width: 200px;
     	height: 45px;
-        font-size: 2.5vw;/*文字サイズ*/
+        font-size: 2.5vw;
     	text-align: center;
     	line-height: 45px;
     	padding-left: 5px;
     	padding-right: 5px;
     	cursor: pointer;
-    	color: #ff80c4;
-    	border: 2px solid #ff80c4;
+    	color: #E6AC27;
+    	border: 2px solid #E6AC27;
     	border-radius: 5px;
+        background-color: #ffffff;
     }
 
     .raised:hover {
-    	background-color: #ffffff;
+        color: #ffffff;
+    	background-color: #E6AC27;
     }
+
+
+
 
 
     .box24 {
@@ -157,13 +163,8 @@
             <font color="#9bb8de">
                 選択中はボタンの背景に色がつきます。<br>
                 リクエストボタンを押すと画面が変わります。<br>
-                この画面に戻りたいときは、ブラウザの戻るボタンで。<br>
-                戻ってきた後画面をリロードすると、もう一度選び直せます。
+                この画面に戻りたいときは、ブラウザの戻るボタンで。
             </font>
-
-        </pre>
-
-        <pre>
 
         </pre>
 
@@ -191,40 +192,34 @@
         <input type="checkbox" value="チョコレート" name="flavor" id="chocolate1">
         <label for="chocolate1">チョコレート</label>
         <input type="checkbox" value="ハーブ" name="flavor" id="herb1">
-        <label for="herb1">ハーブ</label>
-        <input type="checkbox" value="軽やか" name="flavor" id="light1">
+        <label for="herb1">ハーブ</label><br>
 
+        <input type="checkbox" value="軽やか" name="flavor" id="light1">
         <label for="light1">軽やか</label>
         <input type="checkbox" value="バランス" name="flavor" id="medium1">
         <label for="medium1">バランス</label>
         <input type="checkbox" value="力強い" name="flavor" id="full1">
-        <label for="full1">力強い</label>
+        <label for="full1">力強い</label><br>
 
         <input type="checkbox" value="WILLOW" name="flavor" id="willow">
         <label for="willow">ウィロー</label>
         <input type="checkbox" value="LIGHTNOTE" name="flavor" id="lightnote">
         <label for="lightnote">ライトノート</label>
-
         <input type="checkbox" value="BREAKFAST" name="flavor" id="breakfast">
         <label for="breakfast">ブレックファースト</label>
         <input type="checkbox" value="KENYA" name="flavor" id="kenya">
         <label for="kenya">ケニア</label>
-
-
         <input type="checkbox" value="PIKEPLACE" name="flavor" id="pikeplace">
         <label for="pikaplace">パイクプレイス</label>
         <input type="checkbox" value="GUATEMALA" name="flavor" id="guatemala">
         <label for="guatemala">グアテマラ</label>
-
-
         <input type="checkbox" value="ETHIOPIA" name="flavor" id="ethiopia">
         <label for="ethiopia">エチオピア</label>
         <input type="checkbox" value="HOUSE" name="flavor" id="house">
         <label for="house">ハウスブレンド</label>
-
-
         <input type="checkbox" value="COLOMBIA" name="flavor" id="colombia">
-        <label for="colombia">コロンビア</label>
+        <label for="colombia">コロンビア</label><br>
+
         <input type="checkbox" value="SUMATRA" name="flavor" id="sumatra">
         <label for="sumatra">スマトラ</label>
 
@@ -275,7 +270,8 @@
         <input type="checkbox" value="チョコレート" name="flavor" id="chocolate2">
         <label for="chocolate2">チョコレート</label>
         <input type="checkbox" value="ハーブ" name="flavor" id="herb2">
-        <label for="herb2">ハーブ</label>
+        <label for="herb2">ハーブ</label><br>
+
         <input type="checkbox" value="軽やか" name="flavor" id="light2">
         <label for="light2">軽やか</label>
         <input type="checkbox" value="バランス" name="flavor" id="medium2">
@@ -286,7 +282,6 @@
     </div>
 
     <div>
-
     <input type="submit" value="Request" class="raised">
     </div>
 
